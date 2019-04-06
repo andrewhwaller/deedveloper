@@ -34,6 +34,7 @@ class Deedveloper::CLI
 
     def job_detail(input)
         #formats the specific job information
+        puts  @jobs[input.to_i-1].title,  @jobs[input.to_i-1].company, @jobs[input.to_i-1].description, @jobs[input.to_i-1].website
     end
 
     def goodbye

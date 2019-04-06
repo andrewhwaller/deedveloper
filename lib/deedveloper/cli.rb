@@ -18,6 +18,18 @@ class Deedveloper::CLI
 
     def sort 
         #takes user input and displays info on specific job
+        input = nil
+        while input != "exit"
+            puts "Enter the number of a job to see more info! Type exit to end search or type list to see job listings again."
+            input = gets.strip.downcase
+            if input.to_i > 0
+                job_detail(input)
+            elsif input == "list"
+                list_jobs
+            else
+                puts "Please type list or exit to proceed."
+            end
+        end
     end
 
     def job_detail(input)

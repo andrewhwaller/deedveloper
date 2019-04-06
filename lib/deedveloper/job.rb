@@ -35,11 +35,11 @@ class Deedveloper::Job
         doc = Nokogiri::HTML(open("https://www.indeed.com/jobs?as_and=junior+ruby+developer&as_phr=&as_any=&as_not=&as_ttl=&as_cmp=&jt=fulltime&st=&sr=directhire&as_src=&salary=&radius=25&l=Austin%2C+TX&fromage=any&limit=50&sort=&psf=advsrch"))
 
         job = self.new
-        job.title = doc.search("h2.jobtitle").text
-        job.company = doc.search("span.company").text
-        job.location = doc.search("span.location").text
-        job.when_posted = doc.search("span.date").text
-        
+        job.title = doc.css("h2 a").text
+        job.company = doc.css("span.company").text
+        job.location = doc.css("span.location").text
+        job.when_posted = doc.css("span.date").text
+
         job
     end
 end 

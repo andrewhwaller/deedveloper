@@ -1,0 +1,20 @@
+a command line interface that scrapes job listings for Ruby developers from Indeed and allows the user to filter the data and pull up the website link for individual jobs to learn more.
+
+user types develedeed
+
+display list of jobs
+
+    1. job 1, company, location
+    2. job 2 company, location
+    etc.
+
+Which job would you like to learn more about?
+
+jobs    
+    jobs have... 
+    title
+    company
+    salary
+    location
+    description
+    website

@@ -39,5 +39,6 @@ class Deedveloper::CLI
 
     def goodbye
         #displays exit message
+        puts "Enjoy your coffee! See you later."
     end
 end

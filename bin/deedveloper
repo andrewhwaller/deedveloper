@@ -1,3 +1,6 @@
 #!/usr/bin/env ruby
 
+require './lib/deedveloper/'
+require './lib/deedveloper/job'
+
 Deedveloper::CLI.new.call

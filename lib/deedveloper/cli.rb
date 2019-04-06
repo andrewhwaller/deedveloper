@@ -10,9 +10,9 @@ class Deedveloper::CLI
 
     def list_jobs
         #get jobs from scraper and puts them 
-        @jobs = Deedveloper::Job.get_jobs
+        @jobs = Deedveloper::Job.latest_jobs
         @jobs.each.with_index(1) do |job, i|
-            puts "#{i}. #{job.title}, #{job.company}, #{job.location}, $#{job.salary}"
+            puts "#{i}. #{job.title}, #{job.company}, #{job.location}, $#{job.when_posted}"
         end
     end
 
@@ -34,7 +34,7 @@ class Deedveloper::CLI
 
     def job_detail(input)
         #formats the specific job information
-        puts  @jobs[input.to_i-1].title,  @jobs[input.to_i-1].company, @jobs[input.to_i-1].description, @jobs[input.to_i-1].website
+        puts  @jobs[input.to_i-1].title,  @jobs[input.to_i-1].company, @jobs[input.to_i-1].location, @jobs[input.to_i-1].when_posted
     end
 
     def goodbye

@@ -1,5 +1,5 @@
 class Deedveloper::Job
-    attr_accessor :title, :company, :location, :salary, :description, :website
+    attr_accessor :title, :company, :location, :when_posted
 
     def self.latest_jobs
         #returns instances of job
@@ -28,9 +28,18 @@ class Deedveloper::Job
         # job_2.website = "url"
     
         # [job_1, job_2]
+        jobs
     end
 
     def self.scrape_indeed
-        doc = Nokogiri::HTML(open("https://www.indeed.com/jobs?q=junior+ruby+developer&l=Austin%2C+TX"))
+        doc = Nokogiri::HTML(open("https://www.indeed.com/jobs?as_and=junior+ruby+developer&as_phr=&as_any=&as_not=&as_ttl=&as_cmp=&jt=fulltime&st=&sr=directhire&as_src=&salary=&radius=25&l=Austin%2C+TX&fromage=any&limit=50&sort=&psf=advsrch"))
+
+        job = self.new
+        job.title = doc.search("h2.jobtitle").text
+        job.company = doc.search("span.company").text
+        job.location = doc.search("span.location").text
+        job.when_posted = doc.search("span.date").text
+        
+        job
     end
 end 

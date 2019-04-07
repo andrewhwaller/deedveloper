@@ -25,15 +25,4 @@ class JobScraper
         @joblist.add_job(j)
         end
     end
-
-    # def self.scrape_indeed
-    #     doc.css('td#resultsCol').each do |job_info| 
-    #         jobs = JobList.new
-    #         job_title = doc.css("h2 a").text
-    #         job_company = doc.css("span.company").text
-    #         job_location = doc.css("span.location").text
-    #         job_when_posted = doc.css("span.date").text
-    #         jobs << {title: job_title, company: job_company, location: job_location, when_posted: job_when_posted}
-    #     end
-    # end
 end

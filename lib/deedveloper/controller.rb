@@ -1,16 +1,17 @@
 require_relative "./scraper"
+require_relative "./joblist"
 
 class Controller
     
     def initialize
         puts "Welcome to Deedveloper!"
-
-        JobScraper.new
+        j = JobScraper.new
+        @joblist = j.scrape
     end
     
     def call
         #displays welcome message and calls list_jobs/sort
-        puts "Get you a job, son! Grab some coffee and check out these employment opportunities..."
+        puts "You need a job, son! Grab some coffee and let's get this bread..."
         list_jobs
         sort
         goodbye
@@ -18,7 +19,7 @@ class Controller
 
     def list_jobs
         #get jobs from scraper and puts them 
-        Joblist.jobs.each.with_index(1) do |job, i|
+        JobScraper.joblist.each.with_index(1) do |job, i|
             puts "#{i}. #{job.title}, #{job.company}, #{job.location}, $#{job.when_posted}"
         end
     end

@@ -3,4 +3,4 @@
 require './lib/deedveloper/'
 require './lib/deedveloper/job'
 
-Deedveloper::CLI.new.call
+Controller.new.call

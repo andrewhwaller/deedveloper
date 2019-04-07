@@ -1,8 +1,12 @@
 class Joblist
-    attr_accessor :access_date, :search_terms, :jobs
+    attr_accessor :jobs
 
     def initialize
         @jobs = []
+    end
+
+    def add_job(job)
+        @jobs << job
     end
 
 end

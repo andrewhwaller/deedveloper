@@ -1,17 +1,24 @@
+require_relative "./scraper"
+
 class Controller
+    
+    def initialize
+        puts "Welcome to Deedveloper!"
+
+        JobScraper.new
+    end
     
     def call
         #displays welcome message and calls list_jobs/sort
         puts "Get you a job, son! Grab some coffee and check out these employment opportunities..."
-        # list_jobs
+        list_jobs
         sort
         goodbye
     end
 
     def list_jobs
         #get jobs from scraper and puts them 
-        Scraper.scrape_jobs
-        Scraper.joblist.each.with_index(1) do |job, i|
+        Joblist.jobs.each.with_index(1) do |job, i|
             puts "#{i}. #{job.title}, #{job.company}, #{job.location}, $#{job.when_posted}"
         end
     end

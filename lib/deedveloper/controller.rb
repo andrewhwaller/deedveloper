@@ -18,8 +18,8 @@ class Controller
     end
 
     def list_jobs
-        #get jobs from scraper and puts them 
-        JobScraper.joblist.each.with_index(1) do |job, i|
+        #gets jobs from scraper and displays them 
+        @joblist.each.with_index(1) do |job, i|
             puts "#{i}. #{job.title}, #{job.company}, #{job.location}, $#{job.when_posted}"
         end
     end

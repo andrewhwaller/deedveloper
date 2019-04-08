@@ -1,4 +1,4 @@
-require_relative "./joblist"
+require_relative "./job"
 require 'nokogiri'
 
 class JobScraper
@@ -16,7 +16,7 @@ class JobScraper
             j.location = job_card.search("span.location").text.strip
             j.when_posted = job_card.search("span.date").text.strip
 
-        Jobs.all << j
+        Job.all << j
         end
     end
 end

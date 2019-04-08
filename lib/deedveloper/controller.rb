@@ -5,15 +5,16 @@ class Controller
     
     def initialize
         puts "Welcome to Deedveloper!"
-        j = JobScraper.new
-        j.scrape_jobs
+        s = JobScraper.new
+        s.scrape_jobs
     end
     
     def call
         #displays welcome message and calls list_jobs/sort
         puts "You need a job, son! Grab some coffee and let's get this bread..."
+        list_jobs
         job_display
-        sort
+        job_detail
         goodbye
     end
 

@@ -14,5 +14,4 @@ class Job
     def self.all
         @@all
     end
-    
 end

@@ -1,5 +1,6 @@
 require_relative "./scraper"
 require_relative "./job"
+require 'pry'
 
 class Controller
     
@@ -7,6 +8,7 @@ class Controller
         puts "Welcome to Deedveloper!"
         s = JobScraper.new
         s.scrape_jobs
+        binding.pry
     end
     
     def call

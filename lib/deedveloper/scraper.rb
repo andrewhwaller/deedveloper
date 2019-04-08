@@ -9,14 +9,18 @@ class JobScraper
     end
 
     def scrape_jobs
-        @doc.search("jobsearch-SerpJobCard row result clickcard").each do |job_card|
+        # @doc.search("jobsearch-SerpJobCard row result clickcard").each do |job_card|
             j = Job.new
-            j.title = job_card.search("h2 a").text.strip
-            j.company = job_card.search("span.company").text.strip
-            j.location = job_card.search("span.location").text.strip
-            j.when_posted = job_card.search("span.date").text.strip
+            # j.title = job_card.search("h2 a").text
+            j.title = "Sample Title"
+            # j.company = job_card.search("span.company").text
+            j.company = "Sample Company"
+            # j.location = job_card.search("span.location").text
+            j.location = "Sample Location"
+            # j.when_posted = job_card.search("span.date").text
+            j.when_posted = "Sample Date"
 
         Job.all << j
-        end
+        # end
     end
 end

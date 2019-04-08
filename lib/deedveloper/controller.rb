@@ -1,30 +1,30 @@
 require_relative "./scraper"
-require_relative "./joblist"
+require_relative "./job"
 
 class Controller
     
     def initialize
         puts "Welcome to Deedveloper!"
         j = JobScraper.new
-        @joblist = j.scrape
+        j.scrape_jobs
     end
     
     def call
         #displays welcome message and calls list_jobs/sort
         puts "You need a job, son! Grab some coffee and let's get this bread..."
-        list_jobs
+        job_display
         sort
         goodbye
     end
 
     def list_jobs
-        #gets jobs from scraper and displays them 
-        @joblist.each.with_index(1) do |job, i|
+        #gets jobs from Job class and displays them 
+        Job.all.each.with_index(1) do |job, i|
             puts "#{i}. #{job.title}, #{job.company}, #{job.location}, $#{job.when_posted}"
         end
     end
 
-    def sort 
+    def job_display
         #takes user input and displays info on specific job
         input = nil
         while input != "exit"
@@ -41,8 +41,8 @@ class Controller
     end
 
     def job_detail(input)
-        #formats the specific job information
-        puts  @jobs[input.to_i-1].title,  @jobs[input.to_i-1].company, @jobs[input.to_i-1].location, @jobs[input.to_i-1].when_posted
+        #formats the specific job information accorind to user input
+        puts Job.all[input.to_i-1].title,  Job.all[input.to_i-1].company, Job.all[input.to_i-1].location, Job.all[input.to_i-1].when_posted
     end
 
     def goodbye

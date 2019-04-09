@@ -17,10 +17,10 @@ class JobScraper
             j.location = job_card.css("span.location").text.strip
             j.when_posted = job_card.search("span.date").text.strip
             if j.location.empty?
-                j.location = "location unknown (sponsored Indeed post)" 
+                j.location = job_card.css("div.location").text.strip 
             end
             if j.when_posted.empty?
-               j.when_posted = "post date unknown (sponsored Indeed post)"
+               j.when_posted = job_card.css("span.sponsoredGray").text.strip
             end
         end
     end

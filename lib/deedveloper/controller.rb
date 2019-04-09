@@ -6,18 +6,19 @@ class Controller
     
     def initialize
         puts "Welcome to Deedveloper!"
+        puts "You need a job, son! Grab some coffee and let's get this bread..."
         s = JobScraper.new
         s.scrape_jobs
     end
     
     def call
         #displays welcome message and calls list_jobs/sort
-        puts "You need a job, son! Grab some coffee and let's get this bread..."
         list_jobs
         job_display
     end
 
     def list_jobs
+        puts "Check out these jobs:"
         #gets jobs from Job class and displays them 
         Job.all.each.with_index(1) do |job, i|
             puts "#{i}. #{job.title}, #{job.company}, #{job.location}, #{job.when_posted}"

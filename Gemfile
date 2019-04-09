@@ -5,3 +5,5 @@ gemspec
 
 gem 'require_all'
 gem 'pry'
+gem 'rake'
+gem 'nokogiri'

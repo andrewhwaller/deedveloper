@@ -2,5 +2,6 @@
 
 require './lib/deedveloper/'
 require './lib/deedveloper/job'
+require_relative '../config/environment'
 
 Controller.new.call

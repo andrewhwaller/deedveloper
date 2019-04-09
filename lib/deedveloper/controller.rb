@@ -8,7 +8,6 @@ class Controller
         puts "Welcome to Deedveloper!"
         s = JobScraper.new
         s.scrape_jobs
-        binding.pry
     end
     
     def call
@@ -23,7 +22,7 @@ class Controller
     def list_jobs
         #gets jobs from Job class and displays them 
         Job.all.each.with_index(1) do |job, i|
-            puts "#{i}. #{job.title}, #{job.company}, #{job.location}, $#{job.when_posted}"
+            puts "#{i}. #{job.title}, #{job.company}, #{job.location}, #{job.when_posted}"
         end
     end
 

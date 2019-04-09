@@ -6,7 +6,7 @@ class JobScraper
     attr_accessor :doc, :detail_doc
 
     def initialize
-        @doc = Nokogiri::HTML(open("http://www.indeed.com/jobs?as_and=Ruby+Software+Developer&as_phr=&as_any=&as_not=&as_ttl=&as_cmp=&jt=fulltime&st=&sr=directhire&as_src=&salary=&radius=25&l=Austin%2C+TX&fromage=15&limit=50&sort=&psf=advsrch"))
+        @doc = Nokogiri::HTML(open("http://www.indeed.com/jobs?as_and=Ruby+Software+Developer&as_phr=&as_any=&as_not=&as_ttl=&as_cmp=&jt=fulltime&st=&sr=directhire&as_src=&salary=&radius=25&l=Austin%2C+TX&fromage=15&limit=50&sort=&psf=advsrch", :allow_redirections => :all))
     end
 
     def scrape_jobs
@@ -32,7 +32,7 @@ class JobScraper
 
     def self.scrape_detail(input)
         target_job = Job.all[input.to_i-1]
-        @detail_doc = Nokogiri::HTML(open(target_job.job_url))
+        @detail_doc = Nokogiri::HTML(open(target_job.job_url,  :allow_redirections => :all))
         target_job.description = @detail_doc.search("div.jobsearch-JobComponent-description icl-u-xs-mt--md")
     end
 end

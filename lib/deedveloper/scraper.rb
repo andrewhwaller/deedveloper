@@ -22,7 +22,6 @@ class JobScraper
             if j.when_posted.empty?
                j.when_posted = "post date unknown"
             end
-        Job.all << j
         end
     end
 end

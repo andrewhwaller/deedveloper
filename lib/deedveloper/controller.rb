@@ -15,8 +15,6 @@ class Controller
         puts "You need a job, son! Grab some coffee and let's get this bread..."
         list_jobs
         job_display
-        job_detail
-        goodbye
     end
 
     def list_jobs
@@ -32,10 +30,12 @@ class Controller
         while input != "exit"
             puts "Enter the number of a job to see more info! Type exit to end search or type list to see job listings again."
             input = gets.strip.downcase
-            if input.to_i > 0
+            if input.to_i >= 1
                 job_detail(input)
             elsif input == "list"
                 list_jobs
+            elsif input == "exit"
+                goodbye
             else
                 puts "Please type list or exit to proceed."
             end

@@ -41,9 +41,9 @@ class Controller
     end
 
     def job_detail(input)
-        JobScraper.scrape_detail
-        puts "Job title: #{Job.all[input.to_i-1].title}",  
-        "Company: #{Job.all[input.to_i-1].company}", 
+        JobScraper.scrape_detail(input)
+        puts "Job title: #{Job.all[input.to_i-1].title}",
+        "Company: #{Job.all[input.to_i-1].company}",
         "Location: #{Job.all[input.to_i-1].location}",
         "Post date: #{Job.all[input.to_i-1].when_posted}",
         "Indeed posting: #{Job.all[input.to_i-1].job_url}",

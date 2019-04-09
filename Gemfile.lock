@@ -16,6 +16,7 @@ GEM
       mini_portile2 (~> 2.4.0)
     nokogiri (1.10.2-x64-mingw32)
       mini_portile2 (~> 2.4.0)
+    open_uri_redirections (0.2.1)
     pry (0.12.2)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
@@ -34,7 +35,6 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.8.0)
     rspec-support (3.8.0)
-    shorturl (1.0.0)
 
 PLATFORMS
   ruby
@@ -44,11 +44,11 @@ DEPENDENCIES
   bundler (~> 2.0)
   deedveloper!
   nokogiri
+  open_uri_redirections (~> 0.2.1)
   pry
   rake
   require_all
   rspec (~> 3.0)
-  shorturl
 
 BUNDLED WITH
    2.0.1

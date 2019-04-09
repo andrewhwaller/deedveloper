@@ -44,7 +44,7 @@ class Controller
 
     def job_detail(input)
         #formats the specific job information accorind to user input
-        puts Job.all[input.to_i-1].title,  Job.all[input.to_i-1].company, Job.all[input.to_i-1].location, Job.all[input.to_i-1].when_posted
+        puts "Job title: #{Job.all[input.to_i-1].title}",  "Company: #{Job.all[input.to_i-1].company}", "Location: #{Job.all[input.to_i-1].location}", "Post date: #{Job.all[input.to_i-1].when_posted}"
     end
 
     def goodbye

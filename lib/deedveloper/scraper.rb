@@ -13,24 +13,16 @@ class JobScraper
         doc.css('div.jobsearch-SerpJobCard').each do |job_card|
             j = Job.new
             j.title = job_card.search("a.jobtitle").text.strip
-            # j.title = "Sample Title"
             j.company = job_card.search("span.company").text.strip
-            # j.company = "Sample Company"
-                # if job_card.search("div.location")
-                #     j.location = job_card.search("div.location").text.strip
-                # elsif job_card.search("span.location")
-                #     j.location = job_card.search("span.location").text.strip
-                # else j.location = "location unknowns"
-                # end
-            if job_card.css("span.location")
-                j.location = job_card.css("span.location").text.strip
-            else j.location = "Sponsored"
-                end
-            # j.when_posted = job_card.search("span.date").text.strip
-            if job_card.search("span.date")
-                j.when_posted = job_card.search("span.date").text.strip
-                end
-            end 
+            j.location = job_card.css("span.location").text.strip
+            j.when_posted = job_card.search("span.date").text.strip
+            if j.location.empty?
+                j.location = "location unknown" 
+            end
+            if j.when_posted.empty?
+               j.when_posted = "post date unknown"
+            end
         Job.all << j
         end
     end
+end

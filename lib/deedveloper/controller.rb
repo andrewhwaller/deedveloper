@@ -12,40 +12,47 @@ class Controller
     end
     
     def call
-        #displays welcome message and calls list_jobs/sort
         list_jobs
         job_display
     end
 
     def list_jobs
         puts "Check out these jobs:"
-        #gets jobs from Job class and displays them 
         Job.all.each.with_index(1) do |job, i|
             puts "#{i}. #{job.title}, #{job.company}, #{job.location}, #{job.when_posted}"
         end
     end
 
     def job_display
-        #takes user input and displays info on specific job
         input = nil
         while input != "exit"
             puts "Enter the number of a job to see more info! Type exit to end search or type list to see job listings again."
-            input = gets.strip.downcase
-            if input.to_i >= 1
+            input = gets.strip.downcase 
+            if input.to_i > Job.all.count
+                puts "There aren't that many jobs!"
+            elsif input.to_i >= 1
                 job_detail(input)
             elsif input == "list"
                 list_jobs
             elsif input == "exit"
                 goodbye
-            else
-                puts "Please type list or exit to proceed."
             end
         end
     end
 
     def job_detail(input)
-        #formats the specific job information accorind to user input
-        puts "Job title: #{Job.all[input.to_i-1].title}",  "Company: #{Job.all[input.to_i-1].company}", "Location: #{Job.all[input.to_i-1].location}", "Post date: #{Job.all[input.to_i-1].when_posted}"
+        JobScraper.scrape_detail
+        puts "Job title: #{Job.all[input.to_i-1].title}",  
+        "Company: #{Job.all[input.to_i-1].company}", 
+        "Location: #{Job.all[input.to_i-1].location}",
+        "Post date: #{Job.all[input.to_i-1].when_posted}",
+        "Indeed posting: #{Job.all[input.to_i-1].job_url}",
+        "Salary: #{Job.all[input.to_i-1].salary}",
+        "Job Description: #{Job.all[input.to_i-1].description}"
+    end
+
+    def reprompt
+        puts "Please type list or exit to proceed."
     end
 
     def goodbye

@@ -45,8 +45,8 @@ class Controller
         "Company: #{Job.all[input.to_i-1].company}",
         "Location: #{Job.all[input.to_i-1].location}",
         "Post date: #{Job.all[input.to_i-1].when_posted}",
-        "Indeed posting: #{Job.all[input.to_i-1].job_url}",
-        "Salary: #{Job.all[input.to_i-1].salary}"
+        "Salary: #{Job.all[input.to_i-1].salary}",
+        "Indeed posting: #{Job.all[input.to_i-1].job_url}"
     end
 
     def reprompt

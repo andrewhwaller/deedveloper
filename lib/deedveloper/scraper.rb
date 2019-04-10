@@ -29,7 +29,7 @@ class JobScraper
         target_job = Job.all[input.to_i-1]
         @detail_doc = Nokogiri::HTML(open(target_job.job_url, :allow_redirections => :all))
         target_job.description = @detail_doc.search("div.jobsearch-JobComponent-description").text
-        target_job.salary = @detail_doc.search("div.jobsearch-JobMetadataHeader").text
+        target_job.salary = @detail_doc.search("div.jobsearch-JobMetadataHeader").text.strip
         if target_job.salary.empty?
             target_job.salary = "No salary info available"
         end

@@ -3,7 +3,7 @@ PATH
   specs:
     deedveloper (0.1.0)
       nokogiri
-      pry
+      open_uri_redirections
 
 GEM
   remote: https://rubygems.org/
@@ -44,6 +44,7 @@ DEPENDENCIES
   deedveloper!
   nokogiri
   open_uri_redirections
+  pry
   rake
   rspec (~> 3.0)
 

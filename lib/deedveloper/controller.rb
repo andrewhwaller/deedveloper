@@ -19,7 +19,7 @@ class Controller
     def list_jobs
         puts "Check out these jobs:"
         Job.all.each.with_index(1) do |job, i|
-            puts "#{i}. #{job.title}, #{job.company}, #{job.location}, #{job.when_posted}"
+            puts "#{i}. #{job.title}, #{job.company}"
         end
     end
 
@@ -47,8 +47,7 @@ class Controller
         "Location: #{Job.all[input.to_i-1].location}",
         "Post date: #{Job.all[input.to_i-1].when_posted}",
         "Indeed posting: #{Job.all[input.to_i-1].job_url}",
-        "Salary: #{Job.all[input.to_i-1].salary}",
-        "Job Description: #{Job.all[input.to_i-1].description}"
+        "Salary: #{Job.all[input.to_i-1].salary}"
     end
 
     def reprompt
@@ -56,7 +55,6 @@ class Controller
     end
 
     def goodbye
-        #displays exit message
         puts "Enjoy your coffee! See you later."
     end
 end

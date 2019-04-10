@@ -8,6 +8,9 @@ class Job
         @company = company
         @location = location
         @when_posted = when_posted
+        @job_url = job_url
+        @salary = salary
+        @description = description
         @@all << self
     end
 

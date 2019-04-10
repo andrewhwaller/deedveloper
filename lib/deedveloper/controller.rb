@@ -1,6 +1,5 @@
 require_relative "./scraper"
 require_relative "./job"
-require 'pry'
 
 class Controller
     

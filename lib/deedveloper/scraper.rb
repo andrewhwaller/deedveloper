@@ -1,5 +1,3 @@
-require_relative "./job"
-require_relative "./controller"
 require 'nokogiri'
 require 'open-uri'
 

@@ -6,10 +6,10 @@ require "deedveloper/version"
 Gem::Specification.new do |spec|
   spec.name          = "deedveloper"
   spec.version       = Deedveloper::VERSION
-  spec.authors       = ["Andrew Waller"]
-  spec.email         = ["andrewhwaller@gmail.com"]
+  spec.authors       = "Andrew Waller"
+  spec.email         = "andrewhwaller@gmail.com"
 
-  spec.summary       = %q{CLI gem that finds job postings for junior Ruby developers on Indeed}
+  spec.summary       = "CLI gem that finds job postings for junior Ruby developers on Indeed"
   spec.homepage      = "https://github.com/andrewhwaller/deedveloper"
   spec.license       = "MIT"
 
@@ -38,7 +38,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 2.0"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
+  spec.add_development_dependency "pry"
 
   spec.add_dependency "nokogiri"
-  spec.add_dependency "pry"
+  spec.add_dependency "open_uri_redirections"
 end

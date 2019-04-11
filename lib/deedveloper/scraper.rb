@@ -23,7 +23,7 @@ class JobScraper
     end
 
     def get_user_salary
-        puts "What is the salary amount that you're looking for? (Optional, leave blank if you don't have a preference!)"
+        puts "What is the yearly salary or salary range that you're looking for? (Optional, leave blank if you don't have a preference!)"
         @user_salary = gets.strip
     end
 

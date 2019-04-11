@@ -1,5 +1,7 @@
 # Deedveloper
 
+Deedveloper is an Indeed.com search engine in Ruby. Deedveloper allows users to search Indeed.com listings with a general keyword search as well as parameters such as location, search radius, and salary range.
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -15,10 +17,6 @@ And then execute:
 Or install it yourself as:
 
     $ gem install deedveloper
-
-## Usage
-
-TODO: Write usage instructions here
 
 ## Development
 

@@ -5,7 +5,7 @@ class Controller
     
     def call
         #welcomes the user and initiates search
-        puts "Welcome to DEEDVELOPER, an Indeed.com search engine in Ruby!"
+        puts "","░▒▓ Welcome to DEEDVELOPER, an Indeed.com search engine in Ruby! ▓▒░"
         puts "You need a job, son! Grab some coffee and let's get this bread...",""
         search
     end
@@ -35,7 +35,6 @@ class Controller
             input = gets.strip.downcase 
             if input.to_i > Job.all.count
                 puts "There aren't that many jobs!"
-                reprompt
             elsif input.to_i >= 1
                 get_detail(input)
             elsif input == "list"
@@ -59,10 +58,6 @@ class Controller
         "Post date: #{Job.all[input.to_i-1].when_posted}",
         "Salary: #{Job.all[input.to_i-1].salary}",
         "Indeed posting: #{Job.all[input.to_i-1].job_url}",""
-    end
-
-    def reprompt
-        puts 'Please type "exit", "list", or "search" to proceed.'
     end
 
     def goodbye

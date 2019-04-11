@@ -23,7 +23,7 @@ class Scraper
     end
 
     def get_user_salary
-        puts "What is the yearly salary or salary range that you're looking for? (Optional, leave blank if you don't have a preference!)"
+        puts "What is the yearly salary or salary range that you're looking for? Examples: $65,000; 65-85k, 65k, or 65000.","(Optional: leave blank to continue.)"
         @user_salary = gets.strip
     end
 

@@ -4,12 +4,14 @@ require_relative "./job"
 class Controller
     
     def call
+        #welcomes the user and initiates search
         puts "Welcome to DEEDVELOPER, an Indeed.com search engine in Ruby!"
         puts "You need a job, son! Grab some coffee and let's get this bread...",""
         search
     end
 
     def search
+        #calls scraper methods, pulls the resulting data, and displays it for user interaction
         scraper = Scraper.new
         scraper.scrape_jobs
         list_jobs
@@ -17,6 +19,7 @@ class Controller
     end
 
     def list_jobs
+        #formats first level job information and displays it for the user
         puts "Check out these jobs:"
         Job.all.each.with_index(1) do |job, i|
             puts "#{i}. #{job.title} ◦ #{job.company}",
@@ -25,6 +28,7 @@ class Controller
     end
 
     def display_detail
+        #accepts user input, displays level two job information for selected job, and provides other options for user interaction: exit, list, and search
         input = nil
         while input != "exit"
             puts 'Enter the number of a job to see more info! Type "exit" to end search, "list" to see job listings again, or "search" to begin a new search.'
@@ -47,6 +51,7 @@ class Controller
     end
 
     def job_detail(input)
+        #initiates further scraping and formats/displays additional job details for a user-selected job
         Scraper.scrape_detail(input)
         puts "","Job title: #{Job.all[input.to_i-1].title}",
         "Company: #{Job.all[input.to_i-1].company}",

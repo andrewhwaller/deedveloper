@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    deedveloper (0.1.0)
+    deedveloper (0.1.1)
       nokogiri
       open_uri_redirections
 

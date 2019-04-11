@@ -10,7 +10,7 @@ class Controller
     end
 
     def search
-        scraper = JobScraper.new
+        scraper = Scraper.new
         scraper.scrape_jobs
         list_jobs
         display_detail
@@ -47,7 +47,7 @@ class Controller
     end
 
     def job_detail(input)
-        JobScraper.scrape_detail(input)
+        Scraper.scrape_detail(input)
         puts "","Job title: #{Job.all[input.to_i-1].title}",
         "Company: #{Job.all[input.to_i-1].company}",
         "Location: #{Job.all[input.to_i-1].location}",

@@ -1,7 +1,7 @@
 require 'nokogiri'
 require 'open-uri'
 
-class JobScraper
+class Scraper
     attr_accessor :doc, :detail_doc, :user_job, :user_location, :user_salary, :user_radius
 
     def initialize
@@ -9,7 +9,7 @@ class JobScraper
         get_user_location
         get_user_radius
         get_user_salary
-        @doc = Nokogiri::HTML(open("http://www.indeed.com/jobs?as_and=#{user_job}&as_phr=&as_any=&as_not=&as_ttl=&as_cmp=&jt=all&st=&sr=directhire&as_src=&salary=#{user_salary}&radius=#{user_radius}&l=#{user_location}&fromage=15&limit=50&sort=&psf=advsrch", :allow_redirections => :all))
+        @doc = Nokogiri::HTML(open("http://www.indeed.com/jobs?as_and=#{user_job}&jt=all&st=&sr=&as_src=&salary=#{user_salary}&radius=#{user_radius}&l=#{user_location}&fromage=any&limit=50&sort=&psf=advsrch", :allow_redirections => :all))
     end
 
     def get_user_job

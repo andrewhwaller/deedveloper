@@ -5,6 +5,7 @@ class Scraper
     attr_accessor :doc, :detail_doc, :user_job, :user_location, :user_salary, :user_radius
 
     def initialize
+        # performs first round of gets/scraping operations upon intialization
         get_user_job
         get_user_location
         get_user_radius
@@ -23,7 +24,8 @@ class Scraper
     end
 
     def get_user_salary
-        puts "What is the yearly salary or salary range that you're looking for? Examples: $65,000; 65-85k, 65k, or 65000.","(Optional: leave blank to continue.)"
+        #TODO: build logic that recognizes invalid input and reprompts user; invalid or irregular input can affect search results
+        puts "What is the yearly salary or salary range that you're looking for? Examples: $65,000, 65-85k, 65k, or 65000.","(Optional: leave blank to continue.)"
         @user_salary = gets.strip
     end
 

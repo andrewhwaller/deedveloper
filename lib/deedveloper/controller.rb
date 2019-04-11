@@ -11,7 +11,7 @@ class Controller
     end
 
     def search
-        #calls scraper methods, pulls the resulting data, and displays it for user interaction
+        #calls first level scraper method, pulls the resulting data, and displays it for user interaction
         scraper = Scraper.new
         scraper.scrape_jobs
         list_jobs
@@ -43,6 +43,7 @@ class Controller
                 goodbye
             elsif input == "search"
                 puts "OK, let's search again!"
+                # clears Job.all for repopulation by search method
                 Job.all.clear
                 search
             end

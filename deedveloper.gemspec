@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.name          = "deedveloper"
   spec.version       = Deedveloper::VERSION
   spec.authors       = "Andrew Waller"
-  spec.email         = "andrewhwaller@gmail.com"
+  spec.email         = "andrew@andrewhwaller.com"
 
   spec.summary       = "Deedveloper is an Indeed.com search engine in Ruby."
   spec.homepage      = "https://github.com/andrewhwaller/deedveloper"

@@ -52,6 +52,7 @@ class Scraper
     def self.scrape_detail(input)
         target_job = Job.all[input.to_i-1]
         @detail_doc = Nokogiri::HTML(open(target_job.job_url, :allow_redirections => :all))
+        # TODO: format target_job.description so that it's more readable.
         # target_job.description = @detail_doc.search("div.jobsearch-JobComponent-description").text
         target_job.salary = @detail_doc.search("div.jobsearch-JobMetadataHeader").text.strip
         if target_job.salary.empty?

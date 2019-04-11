@@ -4,10 +4,10 @@ require_relative "./job"
 class Controller
 
     def initialize
-        puts "Welcome to Deedveloper!"
+        puts "Welcome to DEEDVELOPER, an Indeed.com search engine in Ruby!"
         puts "You need a job, son! Grab some coffee and let's get this bread...",""
-        s = JobScraper.new
-        s.scrape_jobs
+        scraper = JobScraper.new
+        scraper.scrape_jobs
     end
     
     def call
@@ -30,6 +30,7 @@ class Controller
             input = gets.strip.downcase 
             if input.to_i > Job.all.count
                 puts "There aren't that many jobs!"
+                reprompt
             elsif input.to_i >= 1
                 job_detail(input)
             elsif input == "list"
@@ -47,7 +48,7 @@ class Controller
         "Location: #{Job.all[input.to_i-1].location}",
         "Post date: #{Job.all[input.to_i-1].when_posted}",
         "Salary: #{Job.all[input.to_i-1].salary}",
-        "Indeed posting: #{Job.all[input.to_i-1].job_url}"
+        "Indeed posting: #{Job.all[input.to_i-1].job_url}",""
     end
 
     def reprompt

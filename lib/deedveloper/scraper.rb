@@ -2,14 +2,34 @@ require 'nokogiri'
 require 'open-uri'
 
 class JobScraper
-    attr_accessor :doc, :detail_doc
+    attr_accessor :doc, :detail_doc, :user_job, :user_location, :user_salary, :user_radius
 
     def initialize
+        get_user_job
+        get_user_location
+        get_user_radius
+        get_user_salary
+        @doc = Nokogiri::HTML(open("http://www.indeed.com/jobs?as_and=#{user_job}&as_phr=&as_any=&as_not=&as_ttl=&as_cmp=&jt=all&st=&sr=directhire&as_src=&salary=&radius=#{user_radius}&l=#{user_location}&fromage=15&limit=50&sort=&psf=advsrch", :allow_redirections => :all))
+    end
+
+    def get_user_job
         puts "What sort of job would you like to search for?"
-        user_job = gets.strip.downcase
+        @user_job = gets.strip.downcase
+    end
+
+    def get_user_location
         puts "What location would you like to search for?"
-        user_location = gets.strip.downcase
-        @doc = Nokogiri::HTML(open("http://www.indeed.com/jobs?as_and=#{user_job}&as_phr=&as_any=&as_not=&as_ttl=&as_cmp=&jt=all&st=&sr=directhire&as_src=&salary=&radius=25&l=#{user_location}&fromage=15&limit=50&sort=&psf=advsrch", :allow_redirections => :all))
+        @user_location = gets.strip.downcase
+    end
+
+    def get_user_salary
+        puts "What is the salary amount that you're looking for? (Optional, leave blank if you don't have a preference!)"
+        @user_salary = gets.strip
+    end
+
+    def get_user_radius
+        puts "What is your desired search radius in miles?"
+        @user_radius = gets.strip
     end
 
     def scrape_jobs

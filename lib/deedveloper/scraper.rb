@@ -9,7 +9,7 @@ class JobScraper
         user_job = gets.strip.downcase
         puts "What location would you like to search for?"
         user_location = gets.strip.downcase
-        @doc = Nokogiri::HTML(open("http://www.indeed.com/jobs?as_and=#{user_job}&as_phr=&as_any=&as_not=&as_ttl=&as_cmp=&jt=fulltime&st=&sr=directhire&as_src=&salary=&radius=25&l=#{user_location}&fromage=15&limit=50&sort=&psf=advsrch", :allow_redirections => :all))
+        @doc = Nokogiri::HTML(open("http://www.indeed.com/jobs?as_and=#{user_job}&as_phr=&as_any=&as_not=&as_ttl=&as_cmp=&jt=all&st=&sr=directhire&as_src=&salary=&radius=25&l=#{user_location}&fromage=15&limit=50&sort=&psf=advsrch", :allow_redirections => :all))
     end
 
     def scrape_jobs
@@ -32,7 +32,7 @@ class JobScraper
     def self.scrape_detail(input)
         target_job = Job.all[input.to_i-1]
         @detail_doc = Nokogiri::HTML(open(target_job.job_url, :allow_redirections => :all))
-        target_job.description = @detail_doc.search("div.jobsearch-JobComponent-description").text
+        # target_job.description = @detail_doc.search("div.jobsearch-JobComponent-description").text
         target_job.salary = @detail_doc.search("div.jobsearch-JobMetadataHeader").text.strip
         if target_job.salary.empty?
             target_job.salary = "No salary info available"

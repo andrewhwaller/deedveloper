@@ -2,9 +2,9 @@ require_relative "./scraper"
 require_relative "./job"
 
 class Controller
-    
+
     def initialize
-        puts "Welcome to Deedveloper!",""
+        puts "Welcome to Deedveloper!"
         puts "You need a job, son! Grab some coffee and let's get this bread...",""
         s = JobScraper.new
         s.scrape_jobs
@@ -16,7 +16,7 @@ class Controller
     end
 
     def list_jobs
-        puts "Check out these jobs:",""
+        puts "Check out these jobs:"
         Job.all.each.with_index(1) do |job, i|
             puts "#{i}. #{job.title}, #{job.company}",
             ""
@@ -42,12 +42,12 @@ class Controller
 
     def job_detail(input)
         JobScraper.scrape_detail(input)
-        puts "","Job title: #{Job.all[input.to_i-1].title}","",
-        "Company: #{Job.all[input.to_i-1].company}","",
-        "Location: #{Job.all[input.to_i-1].location}","",
-        "Post date: #{Job.all[input.to_i-1].when_posted}","",
-        "Salary: #{Job.all[input.to_i-1].salary}","",
-        "Indeed posting: #{Job.all[input.to_i-1].job_url}",""
+        puts "","Job title: #{Job.all[input.to_i-1].title}",
+        "Company: #{Job.all[input.to_i-1].company}",
+        "Location: #{Job.all[input.to_i-1].location}",
+        "Post date: #{Job.all[input.to_i-1].when_posted}",
+        "Salary: #{Job.all[input.to_i-1].salary}",
+        "Indeed posting: #{Job.all[input.to_i-1].job_url}"
     end
 
     def reprompt

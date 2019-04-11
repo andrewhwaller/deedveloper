@@ -5,7 +5,11 @@ class JobScraper
     attr_accessor :doc, :detail_doc
 
     def initialize
-        @doc = Nokogiri::HTML(open("http://www.indeed.com/jobs?as_and=Ruby+Software+Developer&as_phr=&as_any=&as_not=&as_ttl=&as_cmp=&jt=fulltime&st=&sr=directhire&as_src=&salary=&radius=25&l=Austin%2C+TX&fromage=15&limit=50&sort=&psf=advsrch", :allow_redirections => :all))
+        puts "What sort of job would you like to search for?"
+        user_job = gets.strip.downcase
+        puts "What location would you like to search for?"
+        user_location = gets.strip.downcase
+        @doc = Nokogiri::HTML(open("http://www.indeed.com/jobs?as_and=#{user_job}&as_phr=&as_any=&as_not=&as_ttl=&as_cmp=&jt=fulltime&st=&sr=directhire&as_src=&salary=&radius=25&l=#{user_location}&fromage=15&limit=50&sort=&psf=advsrch", :allow_redirections => :all))
     end
 
     def scrape_jobs

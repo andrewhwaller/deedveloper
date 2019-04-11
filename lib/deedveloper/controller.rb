@@ -37,7 +37,7 @@ class Controller
                 puts "There aren't that many jobs!"
                 reprompt
             elsif input.to_i >= 1
-                job_detail(input)
+                get_detail(input)
             elsif input == "list"
                 list_jobs
             elsif input == "exit"
@@ -50,7 +50,7 @@ class Controller
         end
     end
 
-    def job_detail(input)
+    def get_detail(input)
         #initiates further scraping and formats/displays additional job details for a user-selected job
         Scraper.scrape_detail(input)
         puts "","Job title: #{Job.all[input.to_i-1].title}",

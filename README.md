@@ -2,7 +2,9 @@
 
 ## Introduction
 
-Deedveloper is an Indeed.com search engine in Ruby. Deedveloper allows users to search Indeed.com listings with a general keyword search as well as parameters such as location, search radius, and salary range.
+Deedveloper is an Indeed job search engine in Ruby. Deedveloper allows users to search Indeed listings with a general keyword search as well as parameters such as location, search radius, and salary range, all without utilizing the Indeed API.
+
+Video walkthrough: [Deedveloper Walkthrough](https://youtu.be/nu9Ncd97qfI)
 
 ## Installation
 

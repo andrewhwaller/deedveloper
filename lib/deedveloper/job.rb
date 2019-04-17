@@ -1,4 +1,4 @@
-class Job
+class Deedveloper::Job
     attr_accessor :title, :company, :location, :when_posted, :job_url, :salary, :description
 
     @@all = []

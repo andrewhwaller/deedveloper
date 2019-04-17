@@ -1,8 +1,5 @@
-require_relative "./scraper"
-require_relative "./job"
-
-class Controller
-    
+class Deedveloper::Controller
+     
     def call
         #welcomes the user and initiates search
         puts "","░▒▓ Welcome to DEEDVELOPER, an Indeed.com search engine in Ruby! ▓▒░"
@@ -12,16 +9,37 @@ class Controller
 
     def search
         #calls first level scraper method, pulls the resulting data, and displays it for user interaction
-        scraper = Scraper.new
+        scraper = Deedveloper::Scraper.new(user_job, user_location, user_radius, user_salary)
         scraper.scrape_jobs
         list_jobs
         display_detail
     end
 
+    def user_job
+        puts "What sort of job would you like to search for?"
+        gets.strip.downcase
+    end
+
+    def user_location
+        puts "What location would you like to search for?"
+        gets.strip.downcase
+    end
+
+    def user_radius
+        puts "What is your desired search radius in miles?"
+        gets.strip
+    end
+
+    def user_salary
+        #TODO: build logic that recognizes invalid input and reprompts user; invalid or irregular input can affect search results
+        puts "What is the yearly salary or salary range that you're looking for? Examples: $65,000, 65-85k, 65k, or 65000.","(Optional: leave blank to continue.)"
+        gets.strip
+    end
+
     def list_jobs
         #formats first level job information and displays it for the user
         puts "Check out these jobs:"
-        Job.all.each.with_index(1) do |job, i|
+        Deedveloper::Job.all.each.with_index(1) do |job, i|
             puts "#{i}. #{job.title} ◦ #{job.company}",
             ""
         end
@@ -33,7 +51,7 @@ class Controller
         while input != "exit"
             puts 'Enter the number of a job to see more info! Type "exit" to end search, "list" to see job listings again, or "search" to begin a new search.'
             input = gets.strip.downcase 
-            if input.to_i > Job.all.count
+            if input.to_i > Deedveloper::Job.all.count
                 puts "There aren't that many jobs!"
             elsif input.to_i >= 1
                 get_detail(input)
@@ -44,7 +62,7 @@ class Controller
             elsif input == "search"
                 puts "OK, let's search again!"
                 # clears Job.all for repopulation by search method
-                Job.all.clear
+                Deedveloper::Job.all.clear
                 search
             end
         end
@@ -52,13 +70,14 @@ class Controller
 
     def get_detail(input)
         #initiates further scraping and formats/displays additional job details for a user-selected job
-        Scraper.scrape_detail(input)
-        puts "","Job title: #{Job.all[input.to_i-1].title}",
-        "Company: #{Job.all[input.to_i-1].company}",
-        "Location: #{Job.all[input.to_i-1].location}",
-        "Post date: #{Job.all[input.to_i-1].when_posted}",
-        "Salary: #{Job.all[input.to_i-1].salary}",
-        "Indeed posting: #{Job.all[input.to_i-1].job_url}",""
+        Deedveloper::Scraper.scrape_detail(input)
+        job = Deedveloper::Job.all[input.to_i-1]
+        puts "","Job title: #{job.title}",
+        "Company: #{job.company}",
+        "Location: #{job.location}",
+        "Post date: #{job.when_posted}",
+        "Salary: #{job.salary}",
+        "Indeed posting: #{job.job_url}",""
     end
 
     def goodbye

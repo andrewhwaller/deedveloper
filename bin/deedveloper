@@ -2,4 +2,4 @@
 
 require_relative '../config/environment'
 
-Controller.new.call
+Deedveloper::Controller.new.call

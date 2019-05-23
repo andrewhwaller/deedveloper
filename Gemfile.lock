@@ -45,7 +45,7 @@ DEPENDENCIES
   pry
   puma
   rake
-  rspec (~> 3.0)
+  rspec
 
 BUNDLED WITH
    2.0.1

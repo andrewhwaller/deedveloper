@@ -5,3 +5,4 @@ gemspec
 gem 'rake'
 gem 'nokogiri'
 gem 'open_uri_redirections'
+gem 'puma'

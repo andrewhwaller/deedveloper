@@ -1,9 +1,9 @@
 class Deedveloper::Scraper
     attr_accessor :doc, :detail_doc
 
-    def initialize(user_job, user_location, user_salary, user_radius)
+    def initialize(user_job, user_location, user_salary, user_radius, user_experience)
         # performs first round of gets/scraping operations upon intialization
-        @doc = Nokogiri::HTML(open("http://www.indeed.com/jobs?as_and=#{user_job}&jt=all&st=&sr=&as_src=&salary=#{user_salary}&radius=#{user_radius}&l=#{user_location}&fromage=any&limit=50&sort=&psf=advsrch", :allow_redirections => :all))
+        @doc = Nokogiri::HTML(open("http://www.indeed.com/jobs?as_and=#{user_job}&jt=all&st=&sr=&as_src=&salary=#{user_salary}&radius=#{user_radius}&l=#{user_location}&explvl=#{user_experience}&fromage=any&limit=50&sort=&psf=advsrch", :allow_redirections => :all))
     end
 
     def scrape_jobs

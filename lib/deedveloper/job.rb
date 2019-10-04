@@ -1,5 +1,5 @@
 class Deedveloper::Job
-    attr_accessor :title, :company, :location, :when_posted, :job_url, :salary, :description
+    attr_accessor :title, :company, :location, :when_posted, :experience, :job_url, :salary, :description
 
     @@all = []
 
@@ -8,6 +8,7 @@ class Deedveloper::Job
         @company = company
         @location = location
         @when_posted = when_posted
+        @experience = experience
         @job_url = job_url
         @salary = salary
         @description = description

@@ -9,7 +9,7 @@ class Deedveloper::Controller
 
     def search
         #calls first level scraper method, pulls the resulting data, and displays it for user interaction
-        scraper = Deedveloper::Scraper.new(user_job, user_location, user_radius, user_salary)
+        scraper = Deedveloper::Scraper.new(user_job, user_location, user_radius, user_experience, user_salary)
         scraper.scrape_jobs
         list_jobs
         display_detail
@@ -28,6 +28,20 @@ class Deedveloper::Controller
     def user_radius
         puts "What is your desired search radius in miles?"
         gets.strip
+    end
+
+    def user_experience
+        puts 'What sort of experience level are you searching for? Type "entry level", "mid level", or "senior level."','(Optional: leave blank to continue.)'
+        input = gets.strip.to_s
+        if input.include?("entry")
+            return "entry_level"
+        elsif input.include?("mid")
+            return "mid_level"
+        elsif input.include?("senior")
+            return "senior_level"
+        else
+            return nil 
+        end
     end
 
     def user_salary
